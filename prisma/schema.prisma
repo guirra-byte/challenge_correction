@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+
+  id         String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  password   String
+  created_at DateTime @default(now())
+
+  challenge  Challenge[]
+  submission Submission[]
+  @@map("students")
+}
+
+model Challenge {
+
+  id              String  @id @default(uuid())
+  title           String  @unique
+  instructionsUrl String
+  studentId       String?
+
+  Student Student? @relation(fields: [studentId], references: [id])
+
+  Submission Submission[]
+
+  @@map("challenges")
+}
+
+model Submission {
+
+  id         String  @id @default(uuid())
+  student_id String
+  student    Student @relation(fields: [student_id], references: [id])
+
+  challenge_id String
+  challenge    Challenge @relation(fields: [challenge_id], references: [id])
+
+  created_at DateTime @default(now())
+
+  Correction Correction[]
+
+  @@map("submissions")
+}
+
+model Correction {
+
+  id String @id @default(uuid())
+
+  submission_id String
+  Submission    Submission @relation(fields: [submission_id], references: [id])
+
+  created_at DateTime @default(now())
+  grade      Int
+}
