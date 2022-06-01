@@ -23,19 +23,15 @@ Projeto prático para consolidar conhecimentos em **`Testes Automatizados`**
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [x] Cadastrar Clientes verificados por Middleware de autenticação
+- [x] Cadastrar Students
 - [x] Gerar Hash de Password
-- [x] Cadastrar Entregadores verificados por Middleware de autenticação
+- [x] Cadastrar Challenges
 - [x] Inserção no Banco de Dados
-- [x] Verificação se o Cliente está autenticado (JWT)
-- [x] Verificação se o Entregador está autenticado (JWT)
+- [x] Verificação se o Cliente está autenticado
 - [x] Implementação de `JWT`
-- [x] Relacionamento entre Cliente e Entregas - Many to Many
-- [x] Relacionamento entre Entregadores e Entregas - Many to Many
-- [ ] Upload de NF (Nota Fiscal)
-- [x] Cadastro de Entregas
-- [ ] Estado da Entrega - Entregue ou Pendente
-- [ ] Avaliação de Entregador
+- [x] Relacionamento entre Student e Challenges - Many to Many
+- [x] Relacionamento entre Challenges e Corrections - Many to Many
+- [ ] Estado do Desafio - Entregue ou Pendente
 
 # 💻 Sobre o projeto
 
