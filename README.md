@@ -5,18 +5,18 @@ Projeto prático para consolidar conhecimentos em **`Testes Automatizados`**
 
 ![image](https://user-images.githubusercontent.com/77081114/168168815-c9362e67-f907-4f29-af7e-4b3887806bfc.png)
 
-![Captura de Tela (402)](https://user-images.githubusercontent.com/77081114/170145658-1d9a8b2f-5c69-404c-a95c-4f7b6ab12ab1.png)
-![Captura de Tela (403)](https://user-images.githubusercontent.com/77081114/170145661-ac25fc70-1c5e-434b-8802-b52c2cd7cbf5.png)
-![Captura de Tela (395)](https://user-images.githubusercontent.com/77081114/169154546-c70def4e-6ede-49f1-8672-4ed2c206232c.png)
-![Captura de Tela (396)](https://user-images.githubusercontent.com/77081114/169154553-1dc0022b-1ebc-4184-9102-7f203d7f9258.png)
-![Captura de Tela (397)](https://user-images.githubusercontent.com/77081114/169154555-279b005a-8a66-4ec4-95c7-11bbad10b309.png)
-![Captura de Tela (398)](https://user-images.githubusercontent.com/77081114/169154556-e1b5b52a-415b-4def-9a60-082f1f2f2a05.png)
+![Captura de Tela (403)](https://user-images.githubusercontent.com/77081114/171515340-c9c6b2ae-37c6-4715-938d-2650fffa6522.png)
+![Captura de Tela (404)](https://user-images.githubusercontent.com/77081114/171515343-d4914504-c5f0-468f-bcbe-09c56279fa97.png)
+![Captura de Tela (405)](https://user-images.githubusercontent.com/77081114/171515345-01f3b8ef-1171-4171-a288-3fcaa40ce331.png)
+![Captura de Tela (406)](https://user-images.githubusercontent.com/77081114/171515346-01730685-388c-4940-819d-79a8ddc57a39.png)
+![Captura de Tela (407)](https://user-images.githubusercontent.com/77081114/171515348-36a5a4b3-110c-4fb8-b1a6-fc7fa0a60751.png)
+![Captura de Tela (408)](https://user-images.githubusercontent.com/77081114/171515352-b17db466-f555-4b0a-a806-a9e2ec82be05.png)
+![Captura de Tela (409)](https://user-images.githubusercontent.com/77081114/171515464-59833235-3c07-4d8c-9c4d-2597c0dc3c56.png)
 
 ### Descrição ☝
 > Desafio Prático
-> que consiste em um sistema de **Clientes**, **Entregadores** e **Pedidos**. Utilizando o `MySQL` Database  e  `Prisma` como ORM..
-> praticando **relacionamentos** entre tabelas Many to Many, praticando implemetação de **Autenticação Permissiva** com `JWT`
-> As relações muitos-para-muitos referem-se a relações em que zero ou mais registros em um lado da relação podem ser conectados a zero ou mais registros no outro lado.
+> que consiste em um sistema de **Students**, **Challenges** e **Corrections**. Utilizando o `MySQL` Database  e  `Prisma` como ORM..
+> praticando **relacionamentos** entre tabelas Many to Many, praticando implemetação de **Autenticação Permissiva** com `JWT` e colocando em pratica **`Testes Unitários`** com **`Jest`**.
 
 
 ## Ajustes e melhorias ⚙🛠
