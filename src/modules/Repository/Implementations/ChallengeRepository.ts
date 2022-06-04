@@ -62,7 +62,17 @@ export class ChallengeRepository implements IChallengeRepository {
           }
         });
 
-    return findOneChallenge;
+    const findOneChallengeRequestProps: IFindChallengeRequestProps = {
+
+      props: {
+
+        title: findOneChallenge.title,
+        instructionsUrl: findOneChallenge.instructionsUrl
+      },
+      id: findOneChallenge.id
+    }
+
+    return findOneChallengeRequestProps;
   }
 
   async findAll(): Promise<IFindChallengeRequestProps[]> {
@@ -77,7 +87,44 @@ export class ChallengeRepository implements IChallengeRepository {
       }
     });
 
-    return findAllChallenges;
+    const challenges: IFindChallengeRequestProps[] = [];
+
+    findAllChallenges.forEach(async (challenge) => {
+
+      const challengeRequestProps: IFindChallengeRequestProps = {
+
+        props: {
+
+          title: challenge.title,
+          instructionsUrl: challenge.instructionsUrl
+        },
+        id: challenge.id
+      }
+
+      await challenges
+        .push(challengeRequestProps);
+    });
+
+    return challenges;
   }
 
+  async findById(sub: string): Promise<IFindChallengeRequestProps | undefined> {
+
+    const findChallengeById = await this
+      .repository
+      .challenge
+      .findUnique({ where: { id: sub } });
+
+    const findChallengeRequest: IFindChallengeRequestProps = {
+
+      props: {
+
+        title: findChallengeById.title,
+        instructionsUrl: findChallengeById.instructionsUrl
+      },
+      id: findChallengeById.id
+    }
+
+    return findChallengeRequest;
+  }
 }

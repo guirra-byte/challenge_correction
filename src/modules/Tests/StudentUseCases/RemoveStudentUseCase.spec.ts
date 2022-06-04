@@ -1,10 +1,9 @@
-import { RemoveStudentUseCase } from "../Services/useCases/Student/RemoveStudent/RemoveStudentUseCase";
-import { CreateStudentUseCase } from "../Services/useCases/Student/CreateStudent/CreateStudentUseCase";
+import { RemoveStudentUseCase } from "../../Services/useCases/Student/RemoveStudent/RemoveStudentUseCase";
+import { CreateStudentUseCase } from "../../Services/useCases/Student/CreateStudent/CreateStudentUseCase";
 
-import { StudentRepositoryInMemory } from "../Repository/in-memory/StudentRepositoryInMemory/StudentRepositoryInMemory";
+import { StudentRepositoryInMemory } from "../../Repository/in-memory/StudentRepositoryInMemory/StudentRepositoryInMemory";
 
 let removeStudentUseCase: RemoveStudentUseCase;
-let createStudentUseCase: CreateStudentUseCase;
 let studentRepository: StudentRepositoryInMemory;
 
 describe("Delete Student", () => {
@@ -12,7 +11,6 @@ describe("Delete Student", () => {
   beforeEach(async () => {
 
     studentRepository = new StudentRepositoryInMemory();
-    createStudentUseCase = new CreateStudentUseCase(studentRepository);
     removeStudentUseCase = new RemoveStudentUseCase(studentRepository);
 
   });
@@ -29,8 +27,8 @@ describe("Delete Student", () => {
 
     const { name, email, password, challenges } = student;
 
-    await createStudentUseCase
-      .execute(name, email, password, challenges);
+    await studentRepository
+      .create(name, email, password, challenges);
 
     const deleteStudent = await removeStudentUseCase
       .execute(email);
