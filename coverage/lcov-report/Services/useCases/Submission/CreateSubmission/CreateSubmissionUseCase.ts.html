@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.02% </span>
+                <span class="strong">83.78% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/39</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>31/37</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.02% </span>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>2/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">83.78% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/39</span>
+                <span class='fraction'>31/37</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -99,9 +99,7 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -116,33 +114,30 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { ISubmissionRepository } from "../../../../Repository/ISubmissionRepository";
 import { IStudentRepository } from "../../../../Repository/IStudentRepository";
 import { IChallengeRepository } from "../../../../Repository/IChallengeRepository";
-&nbsp;
 import { AppError } from "../../../../Errors/AppError";
 &nbsp;
 export class CreateSubmissionUseCase {
@@ -150,33 +145,32 @@ export class CreateSubmissionUseCase {
   constructor(
     private submissionRepository: ISubmissionRepository,
     private studentRepository: IStudentRepository,
-    private challengeRepository: IChallengeRepository
-  ) { }
+    private challengeRepository: IChallengeRepository) { }
 &nbsp;
-  async <span class="fstat-no" title="function not covered" >execute(student_id: string, challenge_id: string) {</span>
+  async execute(student_id: string, challenge_id: string) {
+&nbsp;
+    const findChallenge = await this
+      .challengeRepository
+      .findById(challenge_id);
+&nbsp;
+    if (findChallenge === undefined) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const findStudent = await this</span>
-<span class="cstat-no" title="statement not covered" >      .studentRepository</span>
-<span class="cstat-no" title="statement not covered" >      .findById(student_id);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    if (!findStudent) {</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >      throw new AppError("This Student does exists");</span>
+<span class="cstat-no" title="statement not covered" >      throw new AppError("This challenge does exists");</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
+&nbsp;
+    const findStudent = await this
+      .studentRepository
+      .findById(student_id);
+&nbsp;
+    if (findStudent === undefined) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const findChallenge = await this</span>
-<span class="cstat-no" title="statement not covered" >      .challengeRepository</span>
-<span class="cstat-no" title="statement not covered" >      .findById(challenge_id);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    if (findChallenge === undefined) {</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >      throw new AppError("This Challenge does exists");</span>
+<span class="cstat-no" title="statement not covered" >      throw new AppError("This student does exists");</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    await this</span>
-<span class="cstat-no" title="statement not covered" >      .submissionRepository</span>
-<span class="cstat-no" title="statement not covered" >      .create(findStudent.id, findChallenge.id);</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+&nbsp;
+    await this
+      .submissionRepository
+      .create(findStudent.id, findChallenge.id);
+  }
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -184,7 +178,7 @@ export class CreateSubmissionUseCase {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sat Jun 04 2022 17:28:20 GMT-0300 (Horário Padrão de Brasília)
+                at Mon Jun 06 2022 08:55:25 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
