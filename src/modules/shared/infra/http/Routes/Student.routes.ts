@@ -1,12 +1,12 @@
 import { response, Router } from 'express';
 
-import { createStudentController } from '../modules/Services/useCases/Student/CreateStudent';
-import { findOneStudentController } from '../modules/Services/useCases/Student/FindOneStudent';
-import { findAllStudentController } from '../modules/Services/useCases/Student/FindAllStudents';
+import { createStudentController } from '../../../../Services/useCases/Student/CreateStudent';
+import { findOneStudentController } from '../../../../Services/useCases/Student/FindOneStudent';
+import { findAllStudentController } from '../../../../Services/useCases/Student/FindAllStudents';
+import { removeStudentController } from '../../../../Services/useCases/Student/RemoveStudent';
 
-import { verifyStudentAlreadyExists } from '../modules/middleware/VerifyStudentAlreadyExists';
-import { VerifyStudentAuthTokenUseCase } from '../modules/middleware/Token/Auth/VerifyStudentAuthToken';
-import { removeStudentController } from '../modules/Services/useCases/Student/RemoveStudent';
+import { verifyStudentAlreadyExists } from '../middleware/VerifyStudentAlreadyExists';
+import { VerifyStudentAuthTokenUseCase } from '../middleware/Token/Auth/VerifyStudentAuthToken';
 
 const studentRoutes = Router();
 
