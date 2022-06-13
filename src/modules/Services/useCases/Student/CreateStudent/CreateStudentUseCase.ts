@@ -1,6 +1,6 @@
 import { IStudentRepository } from "../../../../Repository/IStudentRepository";
 import { hash } from "bcryptjs";
-import { AppError } from "../../../../Errors/AppError";
+import { AppError } from "../../../../shared/infra/http/Errors/AppError";
 
 import { Challenge } from "@prisma/client";
 

@@ -1,5 +1,5 @@
 import { Challenge } from "../../model/class/challenge";
-import { prisma } from "../../Prisma/Client/Client";
+import { prisma } from "../../shared/infra/Prisma/Client/Client";
 import { IChallengeRepository, IFindChallengeRequestProps } from "../IChallengeRepository";
 
 export class ChallengeRepository implements IChallengeRepository {

@@ -1,7 +1,8 @@
 import { ISubmissionRepository } from "../../../../Repository/ISubmissionRepository";
 import { IStudentRepository } from "../../../../Repository/IStudentRepository";
 import { IChallengeRepository } from "../../../../Repository/IChallengeRepository";
-import { AppError } from "../../../../Errors/AppError";
+
+import { AppError } from "../../../../shared/infra/http/Errors/AppError";
 
 export class CreateSubmissionUseCase {
 

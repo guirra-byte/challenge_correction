@@ -1,5 +1,5 @@
 import { IFindSubmissionRequestProps, ISubmissionRepository } from "../ISubmissionRepository";
-import { prisma } from "../../Prisma/Client/Client";
+import { prisma } from "../../shared/infra/Prisma/Client/Client";
 
 export class SubmissionRepository implements ISubmissionRepository {
 

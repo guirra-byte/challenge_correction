@@ -2,10 +2,20 @@ import { ChallengeRepository } from "../../../../Repository/Implementations/Chal
 import { FindOneChallengeUseCase } from "./FindOneChallengeUseCase";
 import { FindOneChallengeController } from "./FindOneChallengeController";
 
-const challengeRepository = ChallengeRepository.getInstance();
+import { Request, Response } from 'express';
 
-const findOneChallengeUseCase = new FindOneChallengeUseCase(challengeRepository);
+const FindOneChallengeInstanceIndex = async (request: Request, response: Response) => {
 
-const findOneChallengeController = new FindOneChallengeController(findOneChallengeUseCase);
+  const challengeRepository = ChallengeRepository.getInstance();
 
-export { findOneChallengeController }
+  const findOneChallengeUseCase = new FindOneChallengeUseCase(challengeRepository);
+
+  const findOneChallengeController = new FindOneChallengeController(findOneChallengeUseCase);
+
+  await findOneChallengeController
+    .handle(request, response);
+
+  return findOneChallengeController;
+}
+
+export { FindOneChallengeInstanceIndex }

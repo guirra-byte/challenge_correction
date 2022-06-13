@@ -2,10 +2,21 @@ import { StudentRepository } from "../../../../Repository/Implementations/Studen
 import { RemoveStudentUseCase } from "./RemoveStudentUseCase";
 import { RemoveStudentController } from "./RemoveStudentController";
 
-const studentRepository = StudentRepository.getInstance();
+import { Request, Response } from 'express';
 
-const removeStudentUseCase = new RemoveStudentUseCase(studentRepository);
+const RemoveStudentInstanceIndex = async (request: Request, response: Response) => {
 
-const removeStudentController = new RemoveStudentController(removeStudentUseCase);
+  const studentRepository = StudentRepository.getInstance();
 
-export { removeStudentController }
+  const removeStudentUseCase = new RemoveStudentUseCase(studentRepository);
+
+  const removeStudentController = new RemoveStudentController(removeStudentUseCase);
+
+  await removeStudentController
+    .handle(request, response);
+
+  return removeStudentController;
+
+}
+
+export { RemoveStudentInstanceIndex } 

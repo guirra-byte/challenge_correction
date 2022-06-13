@@ -1,11 +1,21 @@
-import { StudentRepositoryInMemory } from "../../../../../Repository/in-memory/StudentRepositoryInMemory/StudentRepositoryInMemory";
+import { StudentRepository } from "../../../../../Repository/Implementations/StudentRepository";
 import { CreateStudentAuthTokenUseCase } from "./CreateStudentAuthTokenUseCase";
 import { CreateStudentAuthTokenController } from "./CreateStudentAuthTokenController";
 
-const studentRepository = new StudentRepositoryInMemory();
+import { Request, Response } from 'express';
 
-const createStudentAuthTokenUseCase = new CreateStudentAuthTokenUseCase(studentRepository);
+const CreateStudentAuthTokenInstanceIndex = async (request: Request, response: Response) => {
 
-const createStudentAuthTokenController = new CreateStudentAuthTokenController(createStudentAuthTokenUseCase);
+  const studentRepository = StudentRepository.getInstance();
 
-export { createStudentAuthTokenController }
+  const createStudentAuthTokenUseCase = new CreateStudentAuthTokenUseCase(studentRepository);
+
+  const createStudentAuthTokenController = new CreateStudentAuthTokenController(createStudentAuthTokenUseCase);
+
+  await createStudentAuthTokenController
+    .handle(request, response);
+
+  return createStudentAuthTokenController;
+}
+
+export { CreateStudentAuthTokenInstanceIndex }

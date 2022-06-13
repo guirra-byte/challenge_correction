@@ -1,5 +1,5 @@
 import { IStudentRepository } from '../IStudentRepository';
-import { prisma } from '../../Prisma/Client/Client';
+import { prisma } from '../../shared/infra/Prisma/Client/Client';
 import { IFindStudentRequestProps } from '../IStudentRepository';
 import { Challenge } from '@prisma/client';
 

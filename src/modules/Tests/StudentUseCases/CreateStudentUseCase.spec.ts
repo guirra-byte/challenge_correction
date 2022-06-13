@@ -1,4 +1,3 @@
-import { AppError } from "../../Errors/AppError";
 
 import { StudentRepositoryInMemory } from "../../Repository/in-memory/StudentRepositoryInMemory/StudentRepositoryInMemory";
 import { CreateStudentUseCase } from "../../Services/useCases/Student/CreateStudent/CreateStudentUseCase";

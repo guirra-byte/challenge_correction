@@ -1,5 +1,5 @@
 import { ICorrectionRepository, ICorrectionRequestProps } from "../ICorrectionRepository";
-import { prisma } from "../../Prisma/Client/Client";
+import { prisma } from "../../shared/infra/Prisma/Client/Client";
 import { Correction } from "@prisma/client";
 
 export class CorrectionRepository implements ICorrectionRepository {
@@ -46,13 +46,32 @@ export class CorrectionRepository implements ICorrectionRepository {
     return correctionRequestProps;
   }
 
-  async findAllCorrections(): Promise<Correction[]> {
+  async findAllCorrections(): Promise<ICorrectionRequestProps[]> {
 
     const findAllCorrections = await this
       .repository
       .correction
       .findMany();
 
-    return findAllCorrections;
+    const allCorrections: ICorrectionRequestProps[] = [];
+
+    findAllCorrections.forEach(async (correction) => {
+
+      const newCorrectionProps: ICorrectionRequestProps = {
+
+        props: {
+
+          created_at: correction.created_at,
+          grade: correction.grade,
+          submission_id: correction.submission_id
+        }
+      }
+
+      await allCorrections
+        .push(newCorrectionProps);
+    });
+
+    return allCorrections;
+
   }
 }

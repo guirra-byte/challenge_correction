@@ -2,10 +2,20 @@ import { ChallengeRepository } from "../../../../Repository/Implementations/Chal
 import { CreateChallengeUseCase } from "./CreateChallengeUseCase";
 import { CreateChallengeController } from "./CreateChallengeController";
 
-const challengeRepository = ChallengeRepository.getInstance();
+import { Request, Response } from 'express';
 
-const createChallengeUseCase = new CreateChallengeUseCase(challengeRepository);
+const CreateChallengeInstanceIndex = async (request: Request, response: Response) => {
 
-const createChallengeController = new CreateChallengeController(createChallengeUseCase);
+  const challengeRepository = ChallengeRepository.getInstance();
 
-export { createChallengeController };
+  const createChallengeUseCase = new CreateChallengeUseCase(challengeRepository);
+
+  const createChallengeController = new CreateChallengeController(createChallengeUseCase);
+
+  await createChallengeController
+    .handle(request, response);
+
+  return createChallengeController;
+};
+
+export { CreateChallengeInstanceIndex };

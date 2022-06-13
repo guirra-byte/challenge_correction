@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
-import { tokenPass } from '../../../Services/useCases/Student/Token/Auth/CreateStudentAuthTokenUseCase';
-import { IStudentRepository } from '../../../Repository/IStudentRepository';
+import { tokenPass } from '../../../../../../Services/useCases/Student/Token/Auth/CreateStudentAuthTokenUseCase';
+import { IStudentRepository } from '../../../../../../Repository/IStudentRepository';
 import { AppError } from '../../../Errors/AppError';
 
 export interface ITokenPayloadRequestProps {

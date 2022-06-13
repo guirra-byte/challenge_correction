@@ -2,11 +2,20 @@ import { SubmissionRepository } from "../../../../Repository/Implementations/Sub
 import { FindAllSubmissionsUseCase } from "./FindAllSubmissionsUseCase";
 import { FindAllSubmissionsController } from "./FindAllSubmissionsController";
 
-const submissionRepository = SubmissionRepository
-  .getInstance();
+import { Request, Response } from 'express';
 
-const findAllSubmissionsUseCase = new FindAllSubmissionsUseCase(submissionRepository);
+const FindALlSubmissionsInstanceIndex = async (request: Request, response: Response) => {
 
-const findAllSubmissionsController = new FindAllSubmissionsController(findAllSubmissionsUseCase);
+  const submissionRepository = SubmissionRepository.getInstance();
 
-export { findAllSubmissionsController }
+  const findAllSubmissionsUseCase = new FindAllSubmissionsUseCase(submissionRepository);
+
+  const findAllSubmissionsController = new FindAllSubmissionsController(findAllSubmissionsUseCase);
+
+  findAllSubmissionsController
+    .handle(request, response);
+
+  return findAllSubmissionsController;
+}
+
+export { FindALlSubmissionsInstanceIndex }

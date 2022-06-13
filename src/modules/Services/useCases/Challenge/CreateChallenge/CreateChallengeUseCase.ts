@@ -1,4 +1,4 @@
-import { AppError } from "../../../../Errors/AppError";
+import { AppError } from "../../../../shared/infra/http/Errors/AppError";
 import { IChallengeRepository } from "../../../../Repository/IChallengeRepository";
 
 

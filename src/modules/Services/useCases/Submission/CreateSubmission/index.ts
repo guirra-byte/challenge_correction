@@ -5,12 +5,26 @@ import { ChallengeRepository } from "../../../../Repository/Implementations/Chal
 import { CreateSubmissionUseCase } from "./CreateSubmissionUseCase";
 import { CreateSubmissionController } from "./CreateSubmissionController";
 
-const submissionRepository = SubmissionRepository.getInstance();
-const studentRepository = StudentRepository.getInstance();
-const challengeRepository = ChallengeRepository.getInstance();
+import { Request, Response } from 'express';
 
-const createSubmissionUseCase = new CreateSubmissionUseCase(submissionRepository, studentRepository, challengeRepository);
+const CreateSubmissionInstanceIndex = async (request: Request, response: Response) => {
 
-const createSubmissionController = new CreateSubmissionController(createSubmissionUseCase);
+  // ---- Instanciação dos Repositories ----
 
-export { createSubmissionController }
+  const submissionRepository = SubmissionRepository.getInstance();
+  const studentRepository = StudentRepository.getInstance();
+  const challengeRepository = ChallengeRepository.getInstance();
+
+  // ---- ** ----
+
+  const createSubmissionUseCase = new CreateSubmissionUseCase(submissionRepository, studentRepository, challengeRepository);
+
+  const createSubmissionController = new CreateSubmissionController(createSubmissionUseCase);
+
+  await createSubmissionController
+    .handle(request, response);
+
+  return createSubmissionController;
+}
+
+export { CreateSubmissionInstanceIndex }

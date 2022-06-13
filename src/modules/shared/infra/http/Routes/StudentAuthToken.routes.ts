@@ -1,13 +1,13 @@
-import { Router } from 'express';
+// import { Router } from 'express';
 
-import { createStudentAuthTokenController } from '../modules/Services/useCases/Student/Token/Auth/index';
+// import { createStudentAuthTokenController } from '../modules/Services/useCases/Student/Token/Auth/index';
 
-const studentAuthTokenRoutes = Router();
+// const studentAuthTokenRoutes = Router();
 
-studentAuthTokenRoutes.post('/studentToken', (request, response) => {
+// studentAuthTokenRoutes.post('/studentToken', (request, response) => {
 
-  return createStudentAuthTokenController
-    .handle(request, response)
-})
+//   return createStudentAuthTokenController
+//     .handle(request, response)
+// })
 
-export { studentAuthTokenRoutes }
+// export { studentAuthTokenRoutes }

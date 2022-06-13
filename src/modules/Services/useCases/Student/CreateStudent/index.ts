@@ -2,10 +2,20 @@ import { StudentRepository } from '../../../../Repository/Implementations/Studen
 import { CreateStudentUseCase } from "./CreateStudentUseCase";
 import { CreateStudentController } from "./CreateStudentController";
 
-const studentRepository = new StudentRepository();
+import { Request, Response } from 'express';
 
-const createStudentUseCase = new CreateStudentUseCase(studentRepository);
+const CreateStudentInstanceIndex = async (request: Request, response: Response) => {
 
-const createStudentController = new CreateStudentController(createStudentUseCase);
+  const studentRepository = StudentRepository.getInstance();
 
-export { createStudentController }
+  const createStudentUseCase = new CreateStudentUseCase(studentRepository);
+
+  const createStudentController = new CreateStudentController(createStudentUseCase);
+
+  await createStudentController
+    .handle(request, response);
+
+  return createStudentController;
+}
+
+export { CreateStudentInstanceIndex }

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "save-dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+    "save-dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/modules/shared/infra/http/server.ts"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "@types/uuid": "^8.3.4",
     "prisma": "^3.14.0",
     "ts-jest": "^28.0.3",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^4.7.2",
     "uuid": "^8.3.2"
   },
